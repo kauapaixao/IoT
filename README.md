@@ -130,14 +130,15 @@ Exibe 3 dashboards com gauges, tabelas e gráficos temporais
 
 ## Estrutura do Repositório
 /
-├── README.md
-├── wokwi/
-│   ├── sala 101 Copy.zip
-│   └── sala 202 Copy.zip
-├── nodered/
-│   └── flows.json
-└── grafana/
-├── dashboard1.json
-├── dashboard2.json
-└── dashboard3.json
+README.md
+projeto iot/
+-wokwi/
+-sala 101 Copy.zip
+-sala 202 Copy.zip
+-nodered/
+-flows.json
+-grafana/
+-dashboard1.json
+-dashboard2.json
+-dashboard3.json
 ---
