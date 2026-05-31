@@ -1,0 +1,264 @@
+[
+    {
+        "id": "eaec402831b0ced8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "hivemq-broker",
+        "type": "mqtt-broker",
+        "name": "HiveMQ Cloud",
+        "broker": "clusternome-4c6b47d2.a01.euc1.aws.hivemq.cloud",
+        "port": "8883",
+        "tls": true,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": 4,
+        "keepalive": 15,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "influx-config",
+        "type": "influxdb",
+        "hostname": "us-east-1-1.aws.cloud2.influxdata.com",
+        "port": "443",
+        "protocol": "https",
+        "database": "escola_ar",
+        "name": "InfluxDB Cloud",
+        "usetls": true,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "https://us-east-1-1.aws.cloud2.influxdata.com",
+        "timeout": "",
+        "rejectUnauthorized": false
+    },
+    {
+        "id": "mqtt-in-101",
+        "type": "mqtt in",
+        "z": "eaec402831b0ced8",
+        "name": "Sala 101 - Dados",
+        "topic": "escola/sala101/dados",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "hivemq-broker",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 240,
+        "y": 160,
+        "wires": [
+            [
+                "parse-101",
+                "917e28c296d3602a"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt-in-203",
+        "type": "mqtt in",
+        "z": "eaec402831b0ced8",
+        "name": "Sala 202 - Dados",
+        "topic": "escola/sala202/dados",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "hivemq-broker",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 240,
+        "y": 320,
+        "wires": [
+            [
+                "parse-203",
+                "bc34e4b47394ff84"
+            ]
+        ]
+    },
+    {
+        "id": "parse-101",
+        "type": "json",
+        "z": "eaec402831b0ced8",
+        "name": "Parse JSON 101",
+        "x": 470,
+        "y": 160,
+        "wires": [
+            [
+                "logic-101"
+            ]
+        ]
+    },
+    {
+        "id": "parse-203",
+        "type": "json",
+        "z": "eaec402831b0ced8",
+        "name": "Parse JSON 202",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 470,
+        "y": 320,
+        "wires": [
+            [
+                "logic-203"
+            ]
+        ]
+    },
+    {
+        "id": "logic-101",
+        "type": "function",
+        "z": "eaec402831b0ced8",
+        "name": "Lógica Sala 101",
+        "func": "var payload = msg.payload;\n\nif (typeof payload === 'string') {\n    payload = JSON.parse(payload);\n}\n\nvar co2 = payload.co2;\nvar temp = payload.temp;\nvar umidade = payload.umidade;\nvar sala = payload.sala;\nvar status = 'NORMAL';\n\nif (co2 > 2000) status = 'CRITICO';\nelse if (co2 > 1000) status = 'ATENCAO';\n\nvar salaTag = sala.replace(/ /g, \"_\");\n\nmsg.sala = sala;\nmsg.temp = temp;\nmsg.umidade = umidade;\nmsg.co2 = co2;\nmsg.status = status;\n\nmsg.payload = 'qualidade_ar,sala=' + salaTag + ' temperatura=' + parseFloat(temp) + ',umidade=' + parseFloat(umidade) + ',co2=' + parseInt(co2);\n\nmsg.headers = {\n    \"Authorization\": \"Token aFB3ACdTTmy7R4M71B9OrFv4_LENI9QoV4u8hpDqwwztWERHhbVTQ211CqmreNgg-3DWOo8jgquVf32AFBCsvQ==\",\n    \"Content-Type\": \"text/plain; charset=utf-8\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 160,
+        "wires": [
+            [
+                "mqtt-out-101",
+                "c6c1a9044f4d7fa8"
+            ]
+        ]
+    },
+    {
+        "id": "logic-203",
+        "type": "function",
+        "z": "eaec402831b0ced8",
+        "name": "Lógica Sala 202",
+        "func": "var payload = msg.payload;\n\nif (typeof payload === 'string') {\n    payload = JSON.parse(payload);\n}\n\nvar co2 = payload.co2;\nvar temp = payload.temp;\nvar umidade = payload.umidade;\nvar sala = payload.sala;\nvar status = 'NORMAL';\n\nif (co2 > 2000) status = 'CRITICO';\nelse if (co2 > 1000) status = 'ATENCAO';\n\nvar salaTag = sala.replace(/ /g, \"_\");\n\nmsg.sala = sala;\nmsg.temp = temp;\nmsg.umidade = umidade;\nmsg.co2 = co2;\nmsg.status = status;\n\nmsg.payload = 'qualidade_ar,sala=' + salaTag + ' temperatura=' + parseFloat(temp) + ',umidade=' + parseFloat(umidade) + ',co2=' + parseInt(co2);\n\nmsg.headers = {\n    \"Authorization\": \"Token aFB3ACdTTmy7R4M71B9OrFv4_LENI9QoV4u8hpDqwwztWERHhbVTQ211CqmreNgg-3DWOo8jgquVf32AFBCsvQ==\",\n    \"Content-Type\": \"text/plain; charset=utf-8\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 320,
+        "wires": [
+            [
+                "mqtt-out-203",
+                "c6c1a9044f4d7fa8"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt-out-101",
+        "type": "mqtt out",
+        "z": "eaec402831b0ced8",
+        "name": "Atuador Sala 101",
+        "topic": "escola/sala101/atuador",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "hivemq-broker",
+        "x": 1030,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "mqtt-out-203",
+        "type": "mqtt out",
+        "z": "eaec402831b0ced8",
+        "name": "Atuador Sala 202",
+        "topic": "escola/sala202/atuador",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "hivemq-broker",
+        "x": 1030,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "bc34e4b47394ff84",
+        "type": "debug",
+        "z": "eaec402831b0ced8",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 280,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "917e28c296d3602a",
+        "type": "debug",
+        "z": "eaec402831b0ced8",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 280,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "c6c1a9044f4d7fa8",
+        "type": "http request",
+        "z": "eaec402831b0ced8",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://us-east-1-1.aws.cloud2.influxdata.com/api/v2/write?org=2f91882d74a94a70&bucket=escola_ar&precision=s",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 930,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a188d72530fc272b",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-influxdb": "0.7.0"
+        }
+    }
+]
