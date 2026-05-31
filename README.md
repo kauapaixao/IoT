@@ -11,17 +11,20 @@
 
 Sistema de monitoramento ambiental em tempo real para salas de aula, utilizando ESP32 simulados no Wokwi com sensores DHT22 (temperatura e umidade) e MQ135 (CO₂). Os dados são transmitidos via MQTT ao Node-RED, armazenados no InfluxDB Cloud e visualizados em dashboards Grafana.  
 
-ESP32 Sala 101 (Wokwi)  
+ESP32 Sala 101 (Wokwi)
+ESP32 Sala 202 (Wokwi)  
 
 -> HiveMQ (MQTT) -> Node-RED (Railway) -> InfluxDB Cloud -> Grafana  
-
-ESP32 Sala 202 (Wokwi)  
 
 -> Comandos de volta (NORMAL / ATENÇÃO / CRÍTICO)  
 
 -> LED RGB + Buzzer em cada sala  
 
 ---
+
+## 🎥 Demonstração
+
+[![Assistir demonstração](https://img.shields.io/badge/▶%20Ver%20vídeo-FF0000?style=for-the-badge&logo=youtube)](https://youtu.be/QU0PB8yhGLA)
 
 ## Arquitetura e Componentes
 
