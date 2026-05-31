@@ -129,6 +129,7 @@ Exibe 3 dashboards com gauges, tabelas e gráficos temporais
 ---
 
 ## Estrutura do Repositório
+```
 /
 README.md
 projeto iot/
@@ -141,4 +142,5 @@ projeto iot/
 -dashboard1.json
 -dashboard2.json
 -dashboard3.json
+```
 ---
