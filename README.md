@@ -48,9 +48,9 @@ ESP32 Sala 202 (Wokwi)
    - Sala 101: https://wokwi.com/projects/465295995304550401
    - Sala 202: https://wokwi.com/projects/465296228219524097
 2. Substitua no código as credenciais do HiveMQ:
-   - `mqtt_server` → URL do seu broker
-   - `mqtt_user` / `mqtt_pass` → suas credenciais
-3. Clique em ▶ **Play** em cada aba
+   - `mqtt_server` -> URL do seu broker
+   - `mqtt_user` / `mqtt_pass` -> suas credenciais
+3. Clique em **Play** em cada aba
 4. Verifique no **Serial Monitor** os JSONs sendo publicados a cada 5 segundos
 
 ### 2. HiveMQ Cloud — Broker MQTT
