@@ -155,7 +155,7 @@ Exibe 3 dashboards com gauges, tabelas e gráficos temporais
 ---
 
 ## Dashboards
-(projeto%20iot/prints%20projeto%20rodando/dashboard%20monitoramento%20em%20tempo%20real.png)
+![Dashboard monitoramento](projeto%20iot/prints%20projeto%20rodando/dashboard%20monitoramento%20em%20tempo%20real.png)
 
 ![Dashboard](projeto%20iot/prints%20projeto%20rodando/dashboard2.png)
 
