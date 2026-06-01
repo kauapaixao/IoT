@@ -1,4 +1,3 @@
-<img width="1545" height="619" alt="dashboard monitoramento em tempo real" src="https://github.com/user-attachments/assets/53fb0e6d-fdd5-45c7-9b38-4ee89d9884ca" />
 # Monitoramento da Qualidade do Ar em Ambientes Escolares
 
 > Projeto IoT alinhado ao ODS 3 – Saúde e Bem-Estar (ONU Agenda 2030)
@@ -156,7 +155,8 @@ Exibe 3 dashboards com gauges, tabelas e gráficos temporais
 ---
 
 ## Dashboards
-!(./projeto iot/prints projeto rodando/dashboard monitoramento em tempo real.png)
+<img width="1545" height="619" alt="dashboard monitoramento em tempo real" src="https://github.com/kauapaixao/projeto-iot/prints-projeto-rodando/dashboard em tempo real.png" />
+
 
 ## Estrutura do Repositório
 ```
