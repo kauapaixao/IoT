@@ -25,16 +25,16 @@ ESP32 Sala 202 (Wokwi)
 ## Conexões entre os Serviços
 
 ### ESP32 → HiveMQ
-O ESP32 conecta ao broker HiveMQ via Wi-Fi usando o protocolo MQTT com TLS na porta 8883. A cada 5 segundos publica um JSON com temperatura, umidade e CO₂ no tópico `escola/salaXXX/dados`. Também fica escutando o tópico `escola/salaXXX/atuador` para receber comandos de volta.
+O ESP32 conecta ao broker HiveMQ via Wi-Fi usando o protocolo MQTT com TLS na porta 8883. A cada 5 segundos publica um JSON com temperatura, umidade e CO₂ no tópico escola/salaXXX/dados. Também fica escutando o tópico `escola/salaXXX/atuador` para receber comandos de volta.
 
 ### HiveMQ → Node-RED
 O Node-RED se conecta ao mesmo broker HiveMQ como cliente MQTT. Ele assina (subscribe) os tópicos de dados das salas e recebe as mensagens em tempo real assim que o ESP32 publica.
 
 ### Node-RED → ESP32
-Após processar os dados, o Node-RED publica de volta no tópico `escola/salaXXX/atuador` com o status `NORMAL`, `ATENCAO` ou `CRITICO`. O ESP32 recebe esse comando e aciona o LED RGB e o buzzer de acordo.
+Após processar os dados, o Node-RED publica de volta no tópico escola/salaXXX/atuador com o status NORMAL, ATENÇAO ou CRITICO. O ESP32 recebe esse comando e aciona o LED RGB e o buzzer de acordo.
 
 ### Node-RED → InfluxDB
-O Node-RED monta os dados no formato Line Protocol e envia via HTTP POST para a API do InfluxDB Cloud, gravando no bucket `escola_ar` com os campos temperatura, umidade e co2, e a tag sala.
+O Node-RED monta os dados no formato Line Protocol e envia via HTTP POST para a API do InfluxDB Cloud, gravando no bucket "escola_ar" com os campos temperatura, umidade e co2, e a tag sala.
 
 ### InfluxDB → Grafana
 O Grafana conecta ao InfluxDB Cloud como data source usando SQL. Consulta o bucket `escola_ar` e exibe os dados em 3 dashboards com gauges, tabelas e gráficos de série temporal.
