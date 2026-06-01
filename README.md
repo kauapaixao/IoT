@@ -1,3 +1,4 @@
+<img width="1545" height="619" alt="dashboard monitoramento em tempo real" src="https://github.com/user-attachments/assets/53fb0e6d-fdd5-45c7-9b38-4ee89d9884ca" />
 # Monitoramento da Qualidade do Ar em Ambientes Escolares
 
 > Projeto IoT alinhado ao ODS 3 – Saúde e Bem-Estar (ONU Agenda 2030)
