@@ -154,6 +154,9 @@ Exibe 3 dashboards com gauges, tabelas e gráficos temporais
 
 ---
 
+## Dashboards
+!(projeto iot/prints projeto rodando/dashboard monitoramento em tempo real.png)
+
 ## Estrutura do Repositório
 ```
 /
