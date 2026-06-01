@@ -22,7 +22,7 @@ ESP32 Sala 202 (Wokwi)
 
 ---
 
-## 🎥 Demonstração
+## Demonstração
 
 [![Assistir demonstração](https://img.shields.io/badge/▶%20Ver%20vídeo-FF0000?style=for-the-badge&logo=youtube)](https://youtu.be/QU0PB8yhGLA)
 
