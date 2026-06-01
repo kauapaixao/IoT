@@ -155,8 +155,11 @@ Exibe 3 dashboards com gauges, tabelas e gráficos temporais
 ---
 
 ## Dashboards
-<img width="1545" height="619" alt="dashboard monitoramento em tempo real" src="https://github.com/kauapaixao/projeto-iot/prints-projeto-rodando/dashboard em tempo real.png" />
+![Dashboard](projeto%20iot/prints%20projeto%20rodando/dashboard1.png)
 
+![Dashboard](projeto%20iot/prints%20projeto%20rodando/dashboard2.png)
+
+![Dashboard](projeto%20iot/prints%20projeto%20rodando/dashboard3.png)
 
 ## Estrutura do Repositório
 ```
